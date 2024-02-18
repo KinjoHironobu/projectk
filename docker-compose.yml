@@ -1,6 +1,12 @@
 services:
   db:
     image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./my_dbdata:/var/lib/postgresql/data
+
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
