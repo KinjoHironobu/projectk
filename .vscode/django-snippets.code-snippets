@@ -36,7 +36,7 @@
 		"body": [
 			"class ${1:ModelName}(models.Model):",
 			"\t\"\"\" ${2:モデル名} \"\"\"",
-			"\tname = models.CharField(\"${2:モデル名}名称\", maxlength=50)",
+			"\tname = models.CharField(\"${2:モデル名}名称\", max_length=50)",
 			"\tcreated_at = models.DateTimeField(auto_now_add=True)",
 			"\tupdated_at = models.DateTimeField(auto_now=True)",
 			"",
