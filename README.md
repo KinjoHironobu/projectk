@@ -19,3 +19,11 @@ docker compose exec web python manage.py migrate
 ``` bash
 docker compose exec web python manage.py createsuperuser
 ```
+
+### Docker掃除用
+``` bash
+docker system prune
+docker volume prune
+docker image prune -a
+docker builder prune
+```
