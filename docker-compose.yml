@@ -24,6 +24,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: postgres
     ports:
       - "8080:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
     restart: always
 
   web:
@@ -41,3 +43,5 @@ services:
 volumes:
   db-data:
     name: postgres-data
+  pgadmin-data:
+    name: pgadmin-data
