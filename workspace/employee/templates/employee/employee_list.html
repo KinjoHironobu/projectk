@@ -1,0 +1,35 @@
+{% extends 'employee/base.html' %}
+
+{% block title %}Index{% endblock title %}
+
+{% block content %}
+<h1>Helloaaaaaa</h1>
+{% debug %}
+
+<table class="table table-borderd mt-5">
+  <thead>
+    <tr>
+      <th>年齢</th>
+      {% for department in department_list %}
+      <th>{{ department }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for period in period_list %}
+    <tr>
+      <td>{{ period }}0代</td>
+      {% for department in department_list %}
+      <td>
+        {% for employee_obj in employees_by_department_and_period %}
+          {{% if employee_obj.department == department and employee_obj.period == period %}
+            {{ employee_obj.employee }}<br>
+          {% endif %}}
+        {% endfor %}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
