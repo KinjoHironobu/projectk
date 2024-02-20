@@ -15,6 +15,7 @@ class IndexView(generic.ListView):
             list_obj = {
                 "employee": employee.name,
                 "department": employee.department,
+                "year": employee.age(),
                 "period": employee.age_group()
             }
             employees_by_department_and_period.append(list_obj)

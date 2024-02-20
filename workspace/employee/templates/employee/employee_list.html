@@ -4,7 +4,6 @@
 
 {% block content %}
 <h1>Helloaaaaaa</h1>
-{% debug %}
 
 <table class="table table-borderd mt-5">
   <thead>
@@ -22,9 +21,9 @@
       {% for department in department_list %}
       <td>
         {% for employee_obj in employees_by_department_and_period %}
-          {{% if employee_obj.department == department and employee_obj.period == period %}
+          {% if employee_obj.department == department and employee_obj.period == period %}
             {{ employee_obj.employee }}<br>
-          {% endif %}}
+          {% endif %}
         {% endfor %}
       </td>
       {% endfor %}
