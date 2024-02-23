@@ -1,0 +1,30 @@
+{% extends 'employee/base.html' %}
+
+{% block title %}従業者情報{% endblock title %}
+
+{% block content %}
+<p>{{ day.title }}</p>
+<form action="" method="POST" novalidate>
+  {{ form.non_field_errors }}
+  <table class="table">
+      <tr>
+        <th>従業者番号</th>
+        <td>{{ form.empno }}{{ form.empno.errors }}</td>
+      </tr>
+      <tr>
+        <th>従業者名</th>
+        <td>{{ form.name }}{{ form.name.errors }}</td>
+      </tr>
+      <tr>
+        <th>所属部署</th>
+        <td>{{ form.department }}{{ form.department.errors }}</td>
+      </tr>
+      <tr>
+        <th>生年月日</th>
+        <td>{{ form.birth_day }}{{ form.birth_day.errors }}</td>
+      </tr>
+  </table>
+  <button type="submit" class="btn btn-primary">送信</button>
+  {% csrf_token %}
+</form>
+{% endblock content %}

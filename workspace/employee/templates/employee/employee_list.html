@@ -3,7 +3,7 @@
 {% block title %}Index{% endblock title %}
 
 {% block content %}
-<h1>Helloaaaaaa</h1>
+<h1>List View</h1>
 
 <table class="table table-borderd mt-5">
   <thead>
@@ -22,7 +22,7 @@
       <td>
         {% for employee_obj in employees_by_department_and_period %}
           {% if employee_obj.department == department and employee_obj.period == period %}
-            {{ employee_obj.employee }}<br>
+          <a href="{% url "employee:updateEmployee" employee_obj.pk %}">編集</a> {{ employee_obj.employee }}({{ employee_obj.age }}) <br>
           {% endif %}
         {% endfor %}
       </td>

@@ -1,5 +1,5 @@
-from typing import Any
 from django.views import generic
+from django.urls import reverse_lazy
 from .models import Employee, Department
 
 class IndexView(generic.ListView):
@@ -13,9 +13,10 @@ class IndexView(generic.ListView):
 
         for employee in Employee.objects.all():
             list_obj = {
+                "pk": employee.pk,
                 "employee": employee.name,
                 "department": employee.department,
-                "year": employee.age(),
+                "age": employee.age(),
                 "period": employee.age_group()
             }
             employees_by_department_and_period.append(list_obj)
@@ -24,4 +25,12 @@ class IndexView(generic.ListView):
         context["employees_by_department_and_period"] = employees_by_department_and_period
         return context
 
-    
+class AddEmployeeView(generic.CreateView):
+    model = Employee
+    fields = "__all__"
+    success_url = reverse_lazy("employee:index")
+
+class UpdateEmployeeView(generic.UpdateView):
+    model = Employee
+    fields = "__all__"
+    success_url = reverse_lazy("employee:index")
