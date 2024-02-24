@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" >
     <title>{% block title %}{% endblock title %}</title>
     <!-- Bootstrap CSS -->
-    <link href="{% static 'employee/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'videos/css/bootstrap.min.css' %}" rel="stylesheet">
     {% block extracss %}{% endblock extracss %}
   </head>
   <body>
-    {% include 'employee/navbar.html' %}
+    {% include 'videos/navbar.html' %}
     <div class="container">
       {% block content %}
       {% endblock content %}
     </div>
     <!-- Popper and Bootstrap JS -->
-    <script src="{% static 'employee/js/popper.min.js' %}"></script>
-    <script src="{% static 'employee/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'videos/js/popper.min.js' %}"></script>
+    <script src="{% static 'videos/js/bootstrap.min.js' %}"></script>
     {% block extrajs %}{% endblock extrajs %}
   </body>
 </html>

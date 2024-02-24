@@ -1,10 +1,27 @@
 {% extends 'videos/base.html' %}
+{% load static %}
 {% block title %}Detail{% endblock %}
 {% block content %}
 <h1>{{ video.title }}</h1>
 <p>{{ video.description }}</p>
 <p class="text-muted">投稿日: {{ video.created_at }} - 更新日: {{ video.updated_at }}</p>
 <div class="embed-responsive embed-responsive-16by9">
-  <video controls class="embed-responsive-item" src="{{ video.upload.url }}"></video>
+  <video id="myVideo" class="embed-responsive-item" width="320" height="240" controls>
+    お使いのブラウザはvideoタグをサポートしていません。
+  </video>
 </div>
 {% endblock %}
+{% block extrajs %}
+<script src="{% static 'videos/js/hls.min.js' %}"></script>
+<script>
+  let video = document.getElementById('myVideo');
+  let videoSrc = '{{ video.hls_path.url }}';
+  if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = videoSrc;
+  } else if (Hls.isSupported()) {
+    let hls = new Hls();
+    hls.loadSource(videoSrc);
+    hls.attachMedia(video);
+  }
+</script>
+{% endblock extrajs %}
