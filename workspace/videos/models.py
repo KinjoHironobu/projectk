@@ -37,9 +37,8 @@ class Video(models.Model):
         # ffmpegを使用して動画をHLS形式に変換
         command = [
             'ffmpeg', '-i', input_file,
-            '-profile:v', 'baseline', '-level', '3.0',
-            '-s', '640x360', '-start_number', '0',
-            '-hls_time', '5', '-hls_list_size', '0',
+            '-s', '640x360',
+            '-hls_time', '1', '-hls_list_size', '0',
             '-f', 'hls', os.path.join(hls_output_path, 'index.m3u8')
         ]
         subprocess.run(command, check=True)

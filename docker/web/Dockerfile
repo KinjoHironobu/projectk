@@ -4,6 +4,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /workspace
 WORKDIR /workspace
 ADD ./docker/web/requirements.txt /workspace/
+RUN apt -y update && apt install -y ffmpeg
 RUN python -m pip install --upgrade pip && pip install -r requirements.txt
 ADD ./workspace/ /workspace/
 
