@@ -38,11 +38,12 @@ class Video(models.Model):
         command = [
             'ffmpeg', '-i', input_file,
             '-s', '640x360',
+            '-hls_flags', 'split_by_time',
             '-hls_time', '1', '-hls_list_size', '0',
             '-f', 'hls', os.path.join(hls_output_path, 'index.m3u8')
         ]
         subprocess.run(command, check=True)
         
         # HLSパスを更新
-        self.hls_path = os.path.join(hls_output_path, 'index.m3u8').lstrip(settings.MEDIA_ROOT)
+        self.hls_path = os.path.join(hls_output_path, 'index.m3u8').lstrip(str(settings.MEDIA_ROOT))
         super().save(update_fields=['hls_path'])
