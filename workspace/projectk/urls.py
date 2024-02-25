@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('videos.urls')),
     path('employee/', include('employee.urls')),
+    path('chat/', include('chat.urls')),
 ]
 
 # 開発環境時のみ、Djangoアプリケーション側でメディアファイルを配信する

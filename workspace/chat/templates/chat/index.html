@@ -1,0 +1,22 @@
+{% extends "chat/base.html" %}
+{% block content %}
+<div id="chat-area">
+
+</div>
+{% endblock content %}
+{% block extrajs %}
+<script>
+    const evtSource = new EventSource("{% url 'chat:chatgpt-stream' %}");
+    evtSource.onmessage = function(event){
+        //イベントを受信した際の処理
+        const chatArea = document.getElementById('chat-area');
+        console.log(event)
+        if (event.data == 'None') {
+            evtSource.close()
+            chatArea.innerHTML += "<br>";
+        } else {
+            chatArea.innerHTML += event.data;
+        }
+    }
+</script>
+{% endblock extrajs %}
